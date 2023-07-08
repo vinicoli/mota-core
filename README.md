@@ -25,7 +25,7 @@ Microprocessor design for the Design System's course.
 + Students:
     - Cintia Mafra
     - Vinícius Oliveira
-+ July 2023Quartus
++ July 2023
 
 
 <!-- TABLE OF CONTENTS -->
@@ -129,12 +129,12 @@ Already Implemented:
   - Simple 2x1 multiplexer implementation.
 - bigmux.vhd
   - Simple 3x1 multiplexer implementation.
+- pc.vhd
+  - The program counter for pointing to the next instruction.
 
 To be implemented:
 - main.vhd
   - The main script that is run. This is what should be selected as the design unit when simulating.
-- pc.vhd
-  - The program counter for pointing to the next instruction.
 - sp.vhd
   - The stack pointer register for pointing to the subroutine next instruction.
 - adder.vhd
