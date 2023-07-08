@@ -1,0 +1,27 @@
+# Backup files
+*.bak
+
+##########################
+
+
+# Ignorar arquivos gerados pelo quartus
+*.vwf
+*.qpf
+*.qsf
+*.sof
+*.pof
+*.jic
+*.map
+*.rpt
+*.summary
+*.done
+*.pin
+*.qws
+db/
+incremental_db/
+simulation/
+output_files/
+
+# Ignorar arquivos gerados pelo vhdl
+*.vcd
+
