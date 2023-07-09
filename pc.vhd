@@ -26,11 +26,11 @@ end PC;
 architecture behv of PC is
 
 begin				
-	process(ld, clr)
+	process(ld, clr, i0)
 	begin
-			if clr='1' then
-				O <= "000000000";
-			elsif (ld'event and ld = '1') then
+			if (clr='1') then
+				O <= (others => '0');
+			elsif (rising_edge(ld)) then
 				O <= i0;
 			end if;
 	end process;
