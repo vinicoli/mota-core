@@ -17,12 +17,19 @@ use ieee.std_logic_1164.all;
 
 -- 3x1 multiplexor entity
 entity bigmux is
-port( I0: 	in std_logic_vector(15 downto 0);
-		I1:	in std_logic_vector(15 downto 0);
-		I2:	in std_logic_vector(15 downto 0);
+	generic(
+		-- generic params
+		DATA_WIDTH: natural :=16	-- Width of the input data (set to 16 by default)
+	);
+	port( 
+		-- inputs
+		I0: 	in std_logic_vector(DATA_WIDTH-1 downto 0);
+		I1:	in std_logic_vector(DATA_WIDTH-1 downto 0);
+		I2:	in std_logic_vector(DATA_WIDTH-1 downto 0);
 		sel: 	in std_logic_vector(1 downto 0);
-		O: 	out std_logic_vector(15 downto 0)
-);
+		-- output
+		O: 	out std_logic_vector(DATA_WIDTH-1 downto 0)
+	);
 end bigmux;
 
 
@@ -36,7 +43,7 @@ begin
             when "00" =>	O <= I0;
             when "01" =>	O <= I1;
 				when "10" =>	O <= I2;
-            when others => 
+            when others => O <= (others => '0');
         end case;
     end process;
 end behv;
