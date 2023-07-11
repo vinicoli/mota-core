@@ -37,7 +37,7 @@ end bigmux;
 architecture behv of bigmux is
 
 begin
-	process(I0, I1, sel)
+	process(I0, I1, I2, sel)
     begin
         case sel is
             when "00" =>	O <= I0;
