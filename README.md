@@ -135,6 +135,8 @@ Already Implemented:
   - The stack pointer register for pointing to the subroutine next instruction.
 - adder.vhd
   - Used to naturally increment PC.
+- register_file.vhd
+  - The block of sixteen 16-bit registers.
 
 To be implemented:
 - main.vhd
@@ -143,8 +145,6 @@ To be implemented:
   - The block of memory that reads the instructions from a file and saves it into a block of memory.
 - control.vhd
   - Sets all the flags coming out of the controller appropriately given the 6-bit opcode
-- register_file.vhd
-  - The block of sixteen 16-bit registers.
 - alu.vhd
   - The ALU that performs specific operations given the input of the ALU control.
 - buffer.vhd
