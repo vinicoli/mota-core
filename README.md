@@ -131,12 +131,12 @@ Already Implemented:
   - Simple 3x1 multiplexer implementation.
 - pc.vhd
   - The program counter for pointing to the next instruction.
+- sp.vhd
+  - The stack pointer register for pointing to the subroutine next instruction.
 
 To be implemented:
 - main.vhd
   - The main script that is run. This is what should be selected as the design unit when simulating.
-- sp.vhd
-  - The stack pointer register for pointing to the subroutine next instruction.
 - adder.vhd
   - Used to naturally increment PC.
 - instruction_memory.vhd
