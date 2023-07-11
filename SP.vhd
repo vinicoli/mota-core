@@ -27,69 +27,56 @@ entity SP is
       -- output
       O:          out std_logic_vector(8 downto 0);
       flag_full:  out std_logic;
-      flag_empty: out std_logic;
-		sp:			out integer;
-		sd0:			out std_logic_vector(8 downto 0);
-		sd1:			out std_logic_vector(8 downto 0);
-		sd2:			out std_logic_vector(8 downto 0);
-		sd3:			out std_logic_vector(8 downto 0);
-		sd4:			out std_logic_vector(8 downto 0)
+      flag_empty: out std_logic
    );
 end SP;
 
 architecture rtl of SP is
 
    constant N: integer := 5;
-   type Stack is array (N downto 0) of std_logic_vector(8 downto 0);
+   type Stack is array (0 to N) of std_logic_vector(8 downto 0);
    signal stack_data:   Stack := (others => (others => '0'));
-   signal stack_top:    integer := N;
-   signal full:  std_logic := '0';
-   signal empty:  std_logic := '1';
+   signal stack_top:    integer := 0;
+   signal full:  			std_logic := '0';
+   signal empty:  		std_logic := '1';
+	signal output:			std_logic_vector(8 downto 0);
 
 begin
-   flag_full <= full;
-   flag_empty <= empty;
-	sd0 <= stack_data(0);
-	sd1 <= stack_data(1);
-	sd2 <= stack_data(2);
-	sd3 <= stack_data(3);
-	sd4 <= stack_data(4);
-	sp <= stack_top;
-	O <= stack_data(stack_top);
+   flag_full 	<= full;
+   flag_empty 	<= empty;
+	O 				<= output;
 
 
    process(clk, rst, push, pop)
    begin
       if rst = '1' then
-         stack_top <= N;
+         stack_top <= 0;
          stack_data <= (others => (others => '0'));
          empty <= '1';
          full <= '0';
       elsif rising_edge(clk) then
          if stack_top = 0 then
-            full <= '1';
-            empty <= '0';
-         elsif stack_top = N then
             full <= '0';
             empty <= '1';
+         elsif stack_top = N then
+            full <= '1';
+            empty <= '0';
          else
             full <= '0';
             empty <= '0';
          end if;
 			-- push operation
          if push = '1' and pop = '0' and full = '0' then
-            stack_data(stack_top-1) <= i0;
-            if stack_top /= 0 then
-               stack_top <= stack_top - 1;
-            end if;
-         end if;
+            stack_data(stack_top) <= i0;
+				stack_top <= stack_top + 1;
+				output <= i0;
 
-			-- push operation
-         if push = '0' and pop = '1' and empty = '0' then
-            if stack_top /= N then
-               stack_top <= stack_top +1;
-               end if;
-               
+			-- pop operation
+         elsif push = '0' and pop = '1' and empty = '0' then
+				output <= stack_data(stack_top-1);
+            stack_top <= stack_top -1;
+			else
+				output <= (others => '0');
          end if;
          
       end if;
