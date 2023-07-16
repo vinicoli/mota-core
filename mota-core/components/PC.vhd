@@ -16,23 +16,28 @@ use ieee.std_logic_1164.all;
 ---------------------------------------------------------
 -- PC Register entity
 entity PC is
-port(	ld:	in std_logic;
-		clr:	in std_logic;
-		i0:	in std_logic_vector(8 downto 0);
-		O:		out std_logic_vector(8 downto 0)
+port(	clk:	in std_logic;
+      ld:	in std_logic;
+      clr:	in std_logic;
+      i0:	in std_logic_vector(8 downto 0);
+      O:		out std_logic_vector(8 downto 0)
 );
 end PC;
 
 architecture behv of PC is
 
-begin				
-	process(ld, clr, i0)
-	begin
-			if (clr='1') then
-				O <= (others => '0');
-			elsif (rising_edge(ld)) then
-				O <= i0;
-			end if;
-	end process;
+   constant NULL_DATA:  std_logic_vector(8 downto 0) := (others => '0');
+
+begin
+   p: process(clk, clr)
+   begin
+      if clr = '1' then
+         O <= NULL_DATA;
+      elsif rising_edge(clk) then
+         if ld = '1' then
+            O <= i0;
+         end if;
+      end if;
+   end process;
 
 end behv;
