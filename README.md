@@ -137,6 +137,8 @@ Already Implemented:
   - Used to naturally increment PC.
 - register_file.vhd
   - The block of sixteen 16-bit registers.
+- iobuffer.vhd
+  - The in/out buffer interface.
 
 To be implemented:
 - main.vhd
@@ -147,8 +149,6 @@ To be implemented:
   - Sets all the flags coming out of the controller appropriately given the 6-bit opcode
 - alu.vhd
   - The ALU that performs specific operations given the input of the ALU control.
-- iobuffer.vhd
-  - The in/out buffer interface.
 - data_memory.vhd
   - Sample text
 
