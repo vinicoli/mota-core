@@ -147,7 +147,7 @@ To be implemented:
   - Sets all the flags coming out of the controller appropriately given the 6-bit opcode
 - alu.vhd
   - The ALU that performs specific operations given the input of the ALU control.
-- buffer.vhd
+- iobuffer.vhd
   - The in/out buffer interface.
 - data_memory.vhd
   - Sample text
