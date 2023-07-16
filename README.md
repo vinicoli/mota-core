@@ -139,6 +139,8 @@ Already Implemented:
   - The block of sixteen 16-bit registers.
 - iobuffer.vhd
   - The in/out buffer interface.
+- alu.vhd
+  - The ALU that performs specific operations given the input of the ALU control.
 
 To be implemented:
 - main.vhd
@@ -147,8 +149,6 @@ To be implemented:
   - The block of memory that reads the instructions from a file and saves it into a block of memory.
 - control.vhd
   - Sets all the flags coming out of the controller appropriately given the 6-bit opcode
-- alu.vhd
-  - The ALU that performs specific operations given the input of the ALU control.
 - data_memory.vhd
   - Sample text
 
