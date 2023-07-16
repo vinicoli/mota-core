@@ -21,8 +21,8 @@ use ieee.std_logic_unsigned.all;
 entity alu is
    port (
       -- input
-      in0:            in std_logic_vector(15 downto 0);
-      in1:            in std_logic_vector(15 downto 0);
+      in0:           in std_logic_vector(15 downto 0);
+      in1:           in std_logic_vector(15 downto 0);
       sel:           in std_logic_vector(3 downto 0);
       -- output
       O:             out std_logic_vector(15 downto 0);

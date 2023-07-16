@@ -40,8 +40,6 @@ architecture rtl of register_file is
    type rf_type is array (0 to 15) of std_logic_vector(15 downto 0);
    constant NULL_DATA: std_logic_vector(15 downto 0) := (others => '0');
    signal rf_tmp:    rf_type := (others => NULL_DATA);
-   signal rpdata_tmp:   std_logic_vector(15 downto 0);
-   signal rqdata_tmp:   std_logic_vector(15 downto 0);
 
 begin
 
@@ -59,10 +57,10 @@ begin
    read_p: process(clk, rst)
    begin
       if rst = '1' then
-         rpdata_tmp <= NULL_DATA;
+         Rp_data <= NULL_DATA;
       elsif rising_edge(clk) then
          if Rp_rd = '1' then
-            rpdata_tmp <= rf_tmp(to_integer(unsigned(Rp_addr)));
+            Rp_data <= rf_tmp(to_integer(unsigned(Rp_addr)));
          end if;
       end if;
    end process read_p;
@@ -70,15 +68,12 @@ begin
    read_q: process(clk, rst)
    begin
       if rst = '1' then
-         rqdata_tmp <= NULL_DATA;
+         Rq_data <= NULL_DATA;
       elsif rising_edge(clk) then
          if Rq_rd = '1' then
-            rqdata_tmp <= rf_tmp(to_integer(unsigned(Rq_addr)));
+            Rq_data <= rf_tmp(to_integer(unsigned(Rq_addr)));
          end if;
       end if;
    end process read_q;
-	
-   Rp_data <= rpdata_tmp;
-   Rq_data <= rqdata_tmp;
 
 end rtl; -- rtl
