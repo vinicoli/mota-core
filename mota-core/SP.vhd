@@ -19,11 +19,11 @@ use ieee.numeric_std.all;
 entity SP is
    port (
       -- inputs
-      clk:    in std_logic;
-      i0:     in std_logic_vector(8 downto 0);
-      push:   in std_logic;
-      pop:    in std_logic;
-      rst:    in std_logic;
+      clk:        in std_logic;
+      i0:         in std_logic_vector(8 downto 0);
+      push:       in std_logic;
+      pop:        in std_logic;
+      rst:        in std_logic;
       -- output
       O:          out std_logic_vector(8 downto 0);
       flag_full:  out std_logic;

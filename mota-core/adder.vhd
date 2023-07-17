@@ -23,8 +23,7 @@ entity adder is
 	);
    port (
       -- input
-      A, B:  in std_logic_vector(DATA_WIDTH-1 downto 0);
---      Cin:     in std_logic;  -- Carry In
+      A, B:    in std_logic_vector(DATA_WIDTH-1 downto 0);
       -- output
       O:       out std_logic_vector(DATA_WIDTH-1 downto 0);
       Cout:    out std_logic  -- Carry Out
@@ -38,7 +37,6 @@ architecture dataflow of adder is
 begin
 
 	sum : process(A, B)
---      variable O_tmp: std_logic_vector(DATA_WIDTH downto 0);
    begin
       O_tmp <= ('0' & A) + ('0' & B);
       O <= O_tmp(DATA_WIDTH-1 downto 0);

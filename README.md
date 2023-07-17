@@ -149,8 +149,10 @@ To be implemented:
   - The main script that is run. This is what should be selected as the design unit when simulating.
 - instruction_memory.vhd
   - The block of memory that reads the instructions from a file and saves it into a block of memory.
-- control.vhd
-  - Sets all the flags coming out of the controller appropriately given the 6-bit opcode
+- controller.vhd
+  - Sets all the flags coming out of the controller appropriately given the 5-bit opcode
+- ctrl_unit.vhd
+  - includes the controller, program counter and stack pointer.
 - data_memory.vhd
   - Sample text
 

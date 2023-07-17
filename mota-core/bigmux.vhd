@@ -2,7 +2,7 @@
 -- ELE0517 - SISTEMAS DIGITAIS - T01 (2023.1 - 35N34)
 -- Professor: VICTOR ARAUJO FERRAZ
 -- Alunos:	Cintia Mafra
---				Vinícius Oliveira
+--			Vinícius Oliveira
 -- 07/2023
 
 -- 3x1 multiplexor
@@ -24,8 +24,8 @@ entity bigmux is
 	port( 
 		-- inputs
 		I0: 	in std_logic_vector(DATA_WIDTH-1 downto 0);
-		I1:	in std_logic_vector(DATA_WIDTH-1 downto 0);
-		I2:	in std_logic_vector(DATA_WIDTH-1 downto 0);
+		I1:		in std_logic_vector(DATA_WIDTH-1 downto 0);
+		I2:		in std_logic_vector(DATA_WIDTH-1 downto 0);
 		sel: 	in std_logic_vector(1 downto 0);
 		-- output
 		O: 	out std_logic_vector(DATA_WIDTH-1 downto 0)
