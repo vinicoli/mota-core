@@ -141,6 +141,8 @@ Already Implemented:
   - The in/out buffer interface.
 - alu.vhd
   - The ALU that performs specific operations given the input of the ALU control.
+- datapath.vhd
+  - The datapath of the processor.
 
 To be implemented:
 - main.vhd
