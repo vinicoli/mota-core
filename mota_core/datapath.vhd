@@ -29,7 +29,7 @@ entity datapath is
       R_Rp_rd:             in std_logic;
       R_Rq_addr:           in std_logic_vector(3 downto 0);
       R_Rq_rd:             in std_logic;
-		M_ALU_i0:	         in std_logic_vector(15 downto 0);
+		Imm_data:	         in std_logic_vector(15 downto 0);
 		M_ALU_sel:	         in std_logic;
 		ALU_sel:		         in std_logic_vector(3 downto 0);
       -- output
@@ -82,7 +82,7 @@ begin
          DATA_WIDTH => 16
       )
       port map (
-         I0 => M_ALU_i0,
+         I0 => Imm_data,
          I1 => R_Rp_data,
          sel => M_ALU_sel,
          O => M_ALU_O
