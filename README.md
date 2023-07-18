@@ -145,16 +145,16 @@ Already Implemented:
   - The datapath of the processor.
 - controller.vhd
   - Sets all the flags coming out of the controller appropriately given the 5-bit opcode.
+- instruction_memory.vhd
+  - The block of ROM memory that reads the instructions from a file and saves it into a block of memory.
+- data_memory.vhd
+  - The block of RAM memory that read and write data to use at the program execution.
 
 To be implemented:
 - main.vhd
   - The main script that is run. This is what should be selected as the design unit when simulating.
-- instruction_memory.vhd
-  - The block of memory that reads the instructions from a file and saves it into a block of memory.
 - ctrl_unit.vhd
   - includes the controller, program counter and stack pointer.
-- data_memory.vhd
-  - Sample text
 
 <!-- ## Todo
 1. Add `lw` and `sw` support.
