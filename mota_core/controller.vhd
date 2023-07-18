@@ -35,9 +35,9 @@ entity controller is
    R_Rq_rd:            out std_logic;
    M_ALU_sel:          out std_logic;
    ALU_sel:            out std_logic_vector(3 downto 0);
-   IO_I_addr:          out std_logic_vector(1 downto 0);
+   IO_I_addr:          out std_logic;
    IO_I_en:            out std_logic;
-   IO_O_addr:          out std_logic_vector(1 downto 0);
+   IO_O_addr:          out std_logic;
    IO_O_en:            out std_logic;
    M_PC_sel:           out std_logic_vector(1 downto 0);
    SP_pop:             out std_logic;
@@ -86,9 +86,9 @@ begin
             M_ALU_sel <= '0';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -113,9 +113,9 @@ begin
             M_ALU_sel <= '0';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -140,9 +140,9 @@ begin
             M_ALU_sel <= '0';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
 				
             -- next state
@@ -190,9 +190,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "0000";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -217,9 +217,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "0001";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -244,9 +244,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "0010";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -271,9 +271,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "0011";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -298,9 +298,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "0100";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -325,9 +325,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "0101";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -352,9 +352,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "0110";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -379,9 +379,9 @@ begin
             M_ALU_sel <= '0';
             ALU_sel <= "0111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -406,9 +406,9 @@ begin
             M_ALU_sel <= '0';
             ALU_sel <= "1000";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -433,9 +433,9 @@ begin
             M_ALU_sel <= '0';
             ALU_sel <= "1001";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -460,9 +460,9 @@ begin
             M_ALU_sel <= '0';
             ALU_sel <= "1010";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -487,9 +487,9 @@ begin
             M_ALU_sel <= '0';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -514,9 +514,9 @@ begin
             M_ALU_sel <= '0';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -541,9 +541,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "1011";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -568,9 +568,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -599,9 +599,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -630,9 +630,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -661,9 +661,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -688,9 +688,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -715,9 +715,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= "00";
+            IO_I_addr <= '0';
             IO_I_en <= '0';
-            IO_O_addr <= "00";
+            IO_O_addr <= '0';
             IO_O_en <= '0';
             
 				-- next state
@@ -742,9 +742,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= instruction(22 downto 21);
+            IO_I_addr <= instruction(22);
             IO_I_en <= '1';
-            IO_O_addr <= instruction(22 downto 21);
+            IO_O_addr <= instruction(22);
             IO_O_en <= '0';
             
 				-- next state
@@ -768,9 +768,9 @@ begin
             M_ALU_sel <= '1';
             ALU_sel <= "1111";
             -- related to In/Out
-            IO_I_addr <= instruction(22 downto 21);
+            IO_I_addr <= instruction(22);
             IO_I_en <= '0';
-            IO_O_addr <= instruction(22 downto 21);
+            IO_O_addr <= instruction(22);
             IO_O_en <= '1';
             
             -- next state

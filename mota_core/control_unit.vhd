@@ -39,9 +39,9 @@ entity control_unit is
       R_Rq_rd:             out std_logic;
       M_ALU_sel:           out std_logic;
       ALU_sel:             out std_logic_vector(3 downto 0);
-      IO_I_addr:           out std_logic_vector(1 downto 0);
+      IO_I_addr:           out std_logic;
       IO_I_en:             out std_logic;
-      IO_O_addr:           out std_logic_vector(1 downto 0);
+      IO_O_addr:           out std_logic;
       IO_O_en:             out std_logic;
       I_rw:                out std_logic;
       PC_O:                buffer std_logic_vector(8 downto 0)
