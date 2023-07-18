@@ -5,8 +5,7 @@
 --				Vini­cius Oliveira
 -- 07/2023
 
--- 3x1 multiplexor
--- three 16 bit inputs and one 16 bit output
+-- datapath
 ---------------------------------------------------------
 
 -- Declaring libraries
@@ -15,6 +14,7 @@ use ieee.std_logic_1164.all;
 use work.all;
 
 ---------------------------------------------------------
+-- datapath entity
 entity datapath is
    port (
       -- input 
