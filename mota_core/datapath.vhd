@@ -20,8 +20,8 @@ entity datapath is
       -- input 
       dp_clk:              in std_logic;
 		dp_rst:		         in std_logic;
-      M_R_i0:              in std_logic_vector(15 downto 0);
-      M_R_i1:              in std_logic_vector(15 downto 0);
+      In_data:             in std_logic_vector(15 downto 0);
+      ld_mem:              in std_logic_vector(15 downto 0);
       M_R_sel:             in std_logic_vector(1 downto 0);
       R_W_addr:            in std_logic_vector(3 downto 0);
       R_W_wr:              in std_logic;
@@ -55,8 +55,8 @@ begin
          DATA_WIDTH => 16
       )
       port map (
-         I0 => M_R_i0,
-         I1 => M_R_i1,
+         I0 => In_data,
+         I1 => ld_mem,
          I2 => ALU_O,
          sel => M_R_sel,
          O => R_W_data
