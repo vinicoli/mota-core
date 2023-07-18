@@ -125,36 +125,36 @@ Details of the major parts of the processor.
 
 Already Implemented:
 
+- adder.vhd
+  - Used to naturally increment PC.
 - smallmux.vhd
   - Simple 2x1 multiplexer implementation.
 - bigmux.vhd
   - Simple 3x1 multiplexer implementation.
+- alu.vhd
+  - The ALU that performs specific operations given the input of the ALU control.
 - pc.vhd
   - The program counter for pointing to the next instruction.
 - sp.vhd
   - The stack pointer register for pointing to the subroutine next instruction.
-- adder.vhd
-  - Used to naturally increment PC.
 - register_file.vhd
   - The block of sixteen 16-bit registers.
-- iobuffer.vhd
-  - The in/out buffer interface.
-- alu.vhd
-  - The ALU that performs specific operations given the input of the ALU control.
-- datapath.vhd
-  - The datapath of the processor.
 - controller.vhd
   - Sets all the flags coming out of the controller appropriately given the 5-bit opcode.
+- iobuffer.vhd
+  - The in/out buffer interface.
+- datapath.vhd
+  - The datapath of the processor.
+- ctrl_unit.vhd
+  - includes the controller, program counter and stack pointer.
 - instruction_memory.vhd
   - The block of ROM memory that reads the instructions from a file and saves it into a block of memory.
 - data_memory.vhd
   - The block of RAM memory that read and write data to use at the program execution.
+- mota_core.vhd
+  - The main script that is run. This is what should be selected as the design unit when simulating.
 
 To be implemented:
-- main.vhd
-  - The main script that is run. This is what should be selected as the design unit when simulating.
-- ctrl_unit.vhd
-  - includes the controller, program counter and stack pointer.
 
 <!-- ## Todo
 1. Add `lw` and `sw` support.
