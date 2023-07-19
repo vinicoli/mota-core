@@ -2,7 +2,7 @@
 -- ELE0517 - SISTEMAS DIGITAIS - T01 (2023.1 - 35N34)
 -- Professor: VICTOR ARAUJO FERRAZ
 -- Alunos:	Cintia Mafra
---				ViniÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­cius Oliveira
+--				Vinicius Oliveira
 -- 07/2023
 
 -- control unit
@@ -11,11 +11,11 @@
 -- Declaring libraries
 library ieee;
 use ieee.std_logic_1164.all;
-use work.pc;
-use work.sp;
-use work.bigmux;
-use work.adder;
-use work.controller;
+-- use work.pc;
+-- use work.sp;
+-- use work.bigmux;
+-- use work.adder;
+-- use work.controller;
 
 ---------------------------------------------------------
 -- cpu entity
@@ -49,7 +49,93 @@ entity control_unit is
 end control_unit ;
 
 architecture struct of control_unit is
+
+   component PC is
+      port(	clk:	in std_logic;
+            ld:	in std_logic;
+            clr:	in std_logic;
+            i0:	in std_logic_vector(8 downto 0);
+            O:		out std_logic_vector(8 downto 0)
+      );
+   end component;
+
+   component SP is
+      port (
+         -- inputs
+         clk:        in std_logic;
+         i0:         in std_logic_vector(8 downto 0);
+         push:       in std_logic;
+         pop:        in std_logic;
+         rst:        in std_logic;
+         -- output
+         O:          out std_logic_vector(8 downto 0);
+         flag_full:  out std_logic;
+         flag_empty: out std_logic
+      );
+   end component;
 	
+   component bigmux is
+      generic(
+         -- generic params
+         DATA_WIDTH: natural :=16	-- Width of the input data (set to 16 by default)
+      );
+      port( 
+         -- inputs
+         I0: 	in std_logic_vector(DATA_WIDTH-1 downto 0);
+         I1:		in std_logic_vector(DATA_WIDTH-1 downto 0);
+         I2:		in std_logic_vector(DATA_WIDTH-1 downto 0);
+         sel: 	in std_logic_vector(1 downto 0);
+         -- output
+         O: 	out std_logic_vector(DATA_WIDTH-1 downto 0)
+      );
+   end component;
+
+   component adder is
+      generic (
+         -- generic params
+         DATA_WIDTH: natural :=9	-- Width of the input data (set to 9 by default)
+      );
+      port (
+         -- input
+         A, B:    in std_logic_vector(DATA_WIDTH-1 downto 0);
+         -- output
+         O:       out std_logic_vector(DATA_WIDTH-1 downto 0);
+         Cout:    out std_logic  -- Carry Out
+      );
+   end component;
+
+   component controller is
+      port (
+      -- input
+      ctrl_clk:           in std_logic;
+      ctrl_rst:           in std_logic;
+      instruction:        in std_logic_vector(31 downto 0);
+      ALU_flag_equal:     in std_logic;
+      ALU_flag_bigger:    in std_logic;
+      ALU_flag_u_bigger:  in std_logic;
+      -- output
+      D_rw:               out std_logic;
+      M_R_sel:            out std_logic_vector(1 downto 0);
+      R_W_addr:           out std_logic_vector(3 downto 0);
+      R_W_wr:             out std_logic;
+      R_Rp_addr:          out std_logic_vector(3 downto 0);
+      R_Rp_rd:            out std_logic;
+      R_Rq_addr:          out std_logic_vector(3 downto 0);
+      R_Rq_rd:            out std_logic;
+      M_ALU_sel:          out std_logic;
+      ALU_sel:            out std_logic_vector(3 downto 0);
+      IO_I_addr:          out std_logic;
+      IO_I_en:            out std_logic;
+      IO_O_addr:          out std_logic;
+      IO_O_en:            out std_logic;
+      M_PC_sel:           out std_logic_vector(1 downto 0);
+      SP_pop:             out std_logic;
+      SP_push:            out std_logic;
+      PC_ld:              out std_logic;
+      I_rw:               out std_logic
+      );
+   end component ;
+
 	constant ONE:	std_logic_vector(8 downto 0) := "000000001";
 	signal M_PC_sel:  std_logic_vector(1 downto 0);
    signal SP_pop:    std_logic;
