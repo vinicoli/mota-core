@@ -11,11 +11,6 @@
 -- Declaring libraries
 library ieee;
 use ieee.std_logic_1164.all;
--- use work.pc;
--- use work.sp;
--- use work.bigmux;
--- use work.adder;
--- use work.controller;
 
 ---------------------------------------------------------
 -- cpu entity
@@ -50,6 +45,7 @@ end control_unit ;
 
 architecture struct of control_unit is
 
+   -- component declaration
    component PC is
       port(	clk:	in std_logic;
             ld:	in std_logic;
@@ -136,6 +132,7 @@ architecture struct of control_unit is
       );
    end component ;
 
+   -- internal signs
 	constant ONE:	std_logic_vector(8 downto 0) := "000000001";
 	signal M_PC_sel:  std_logic_vector(1 downto 0);
    signal SP_pop:    std_logic;
@@ -147,6 +144,7 @@ architecture struct of control_unit is
 
 begin
 
+   -- component instantiation
    PC_inst: pc
       port map (
          -- input

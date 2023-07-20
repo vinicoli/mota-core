@@ -12,10 +12,6 @@
 -- Declaring libraries
 library ieee;
 use ieee.std_logic_1164.all;
-use work.instruction_memory;
-use work.data_memory;
-use work.control_unit;
-use work.datapath;
 use work.iobuffer;
 
 ---------------------------------------------------------
@@ -34,6 +30,100 @@ end entity mota_core;
 
 architecture structure of mota_core is
 
+   -- component declaration
+   component instruction_memory is
+      port
+      (
+         address		: IN STD_LOGIC_VECTOR (8 DOWNTO 0);
+         clock		: IN STD_LOGIC  := '1';
+         q		: OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+      );
+   end component;
+
+   component data_memory is
+      port
+         (
+            address		: IN STD_LOGIC_VECTOR (9 DOWNTO 0);
+            clock		: IN STD_LOGIC  := '1';
+            data		: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+            wren		: IN STD_LOGIC ;
+            q		: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+         );
+   end component;
+
+   component control_unit is
+      port (
+         -- input
+         clk:                 in std_logic;
+         rst:                 in std_logic;
+         instruction:         in std_logic_vector(31 downto 0);
+         ALU_flag_equal:      in std_logic;
+         ALU_flag_bigger:     in std_logic;
+         ALU_flag_u_bigger:   in std_logic;
+         -- output
+         D_rw:                out std_logic;
+         M_R_sel:             out std_logic_vector(1 downto 0);
+         R_W_addr:            out std_logic_vector(3 downto 0);
+         R_W_wr:              out std_logic;
+         R_Rp_addr:           out std_logic_vector(3 downto 0);
+         R_Rp_rd:             out std_logic;
+         R_Rq_addr:           out std_logic_vector(3 downto 0);
+         R_Rq_rd:             out std_logic;
+         M_ALU_sel:           out std_logic;
+         ALU_sel:             out std_logic_vector(3 downto 0);
+         IO_I_addr:           out std_logic;
+         IO_I_en:             out std_logic;
+         IO_O_addr:           out std_logic;
+         IO_O_en:             out std_logic;
+         I_rw:                out std_logic;
+         PC_O:                buffer std_logic_vector(8 downto 0)
+         ) ;
+   end component;
+
+   component datapath is
+      port (
+         -- input 
+         dp_clk:              in std_logic;
+         dp_rst:		         in std_logic;
+         In_data:             in std_logic_vector(15 downto 0);
+         ld_mem:              in std_logic_vector(15 downto 0);
+         M_R_sel:             in std_logic_vector(1 downto 0);
+         R_W_addr:            in std_logic_vector(3 downto 0);
+         R_W_wr:              in std_logic;
+         R_Rp_addr:           in std_logic_vector(3 downto 0);
+         R_Rp_rd:             in std_logic;
+         R_Rq_addr:           in std_logic_vector(3 downto 0);
+         R_Rq_rd:             in std_logic;
+         Imm_data:	         in std_logic_vector(15 downto 0);
+         M_ALU_sel:	         in std_logic;
+         ALU_sel:		         in std_logic_vector(3 downto 0);
+         -- output
+         Out_data:            out std_logic_vector(15 downto 0);
+         ALU_flag_equal:      out std_logic;
+         ALU_flag_bigger:     out std_logic;
+         ALU_flag_u_bigger:   out std_logic
+      ) ;
+   end component;
+
+   component iobuffer is
+      port (
+         -- input
+         ibuf_in0:   in std_logic_vector(15 downto 0);
+         ibuf_in1:   in std_logic_vector(15 downto 0);
+         obuf_in:    in std_logic_vector(15 downto 0);
+         I_addr:     in std_logic;
+         I_en:       in std_logic;
+         O_addr:     in std_logic;
+         O_en:       in std_logic;
+         -- output
+         ibuf_out:   out std_logic_vector(15 downto 0);
+         obuf_out0:  out std_logic_vector(15 downto 0);
+         obuf_out1:  out std_logic_vector(15 downto 0)
+      
+      ) ;
+      end component;
+
+   -- internal signs
    signal I_addr_tmp:				std_logic_vector(8 downto 0);
    signal I_rw_tmp:					std_logic;
    signal instruction_tmp:			std_logic_vector(31 downto 0);
@@ -58,12 +148,9 @@ architecture structure of mota_core is
    signal IO_O_en_tmp:				std_logic;
    signal DP_In_data:            std_logic_vector(15 downto 0);
 
-
-
-
-
 begin
 
+   -- component instantiation
    inst_mem: instruction_memory
       port map (
          -- input
@@ -151,7 +238,5 @@ begin
          obuf_out0 => out0,
          obuf_out1 => out1
       );
-
-	
 
 end architecture structure;

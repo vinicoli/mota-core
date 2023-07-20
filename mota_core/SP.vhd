@@ -33,8 +33,11 @@ end SP;
 
 architecture rtl of SP is
 
+   -- usefull constant
    constant N: integer := 5;
+   -- type declaration
    type Stack is array (0 to N) of std_logic_vector(8 downto 0);
+   -- internal signs
    signal stack_data:   Stack := (others => (others => '0'));
    signal stack_top:    integer := 0;
    signal full:  			std_logic := '0';
@@ -42,10 +45,11 @@ architecture rtl of SP is
 	signal output:			std_logic_vector(8 downto 0);
 
 begin
+
+   -- concurrent statements
    flag_full 	<= full;
    flag_empty 	<= empty;
 	O 				<= output;
-
 
    process(clk, rst, push, pop)
    begin

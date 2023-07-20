@@ -11,7 +11,7 @@
 -- Declaring libraries
 library ieee;
 use ieee.std_logic_1164.all;
-use work.all;
+-- use work.all;
 
 ---------------------------------------------------------
 -- datapath entity
@@ -42,6 +42,73 @@ end datapath ;
 
 architecture struct of datapath is
 
+   -- component declaration
+   component bigmux is
+      generic(
+         -- generic params
+         DATA_WIDTH: natural :=16	-- Width of the input data (set to 16 by default)
+      );
+      port( 
+         -- inputs
+         I0: 	in std_logic_vector(DATA_WIDTH-1 downto 0);
+         I1:		in std_logic_vector(DATA_WIDTH-1 downto 0);
+         I2:		in std_logic_vector(DATA_WIDTH-1 downto 0);
+         sel: 	in std_logic_vector(1 downto 0);
+         -- output
+         O: 	out std_logic_vector(DATA_WIDTH-1 downto 0)
+      );
+   end component;
+
+   component register_file is
+      port (
+         -- input
+         clk:        in std_logic;
+         W_data:     in std_logic_vector(15 downto 0);
+         W_addr:     in std_logic_vector(3 downto 0);
+         W_wr:       in std_logic;
+         Rp_addr:    in std_logic_vector(3 downto 0);
+         Rp_rd:      in std_logic;
+         Rq_addr:    in std_logic_vector(3 downto 0);
+         Rq_rd:      in std_logic;
+         rst:        in std_logic;
+         
+         -- output
+         Rp_data:    out std_logic_vector(15 downto 0);
+         Rq_data:    out std_logic_vector(15 downto 0)
+      );
+   end component;
+
+   component smallmux is
+      generic(
+         -- generic params
+         DATA_WIDTH: natural :=16	-- Width of the input data (set to 16 by default)
+      );
+      
+      port(
+         -- inputs
+         I0: 	in std_logic_vector(DATA_WIDTH-1 downto 0);
+         I1:		in std_logic_vector(DATA_WIDTH-1 downto 0);
+         sel: 	in std_logic;
+         -- outputs
+         O: 	out std_logic_vector(DATA_WIDTH-1 downto 0)
+      );
+   end component;
+
+   component alu is
+      port (
+         -- input
+         in0:           in std_logic_vector(15 downto 0);
+         in1:           in std_logic_vector(15 downto 0);
+         sel:           in std_logic_vector(3 downto 0);
+         -- output
+         O:             out std_logic_vector(15 downto 0);
+         flag_equal:    out std_logic;
+         flag_bigger:   out std_logic;
+         flag_u_bigger: out std_logic
+      );
+   end component;
+
+   -- internal signs
    signal R_W_data:     std_logic_vector(15 downto 0);
    signal R_Rp_data:    std_logic_vector(15 downto 0);
    signal R_Rq_data:    std_logic_vector(15 downto 0);
@@ -50,6 +117,7 @@ architecture struct of datapath is
 
 begin
 
+   -- component instantiation
    M_R: bigmux
       generic map (
          DATA_WIDTH => 16
@@ -99,6 +167,7 @@ begin
          flag_u_bigger => ALU_flag_u_bigger
       );
 
+   -- concurrent statements
    Out_data <= R_Rp_data;
 
 end struct; -- bhv
